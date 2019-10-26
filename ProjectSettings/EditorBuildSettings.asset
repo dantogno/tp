@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Oculus/SampleFramework/Usage/AvatarGrab.unity
     guid: 941c413af7c367d40aab0725f5a59530
   - enabled: 0
     path: Assets/Oculus/SampleFramework/Usage/CustomHands.unity
     guid: a4f984fcee593d2418cc61f4a993d46d
+  - enabled: 1
+    path: Assets/Scenes/ToiletTest.unity
+    guid: 875ad8a1c42200346a2f20f71c724c08
   m_configObjects: {}
