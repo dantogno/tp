@@ -17,6 +17,13 @@ public class PeeController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 1.0f;
 
+    [Tooltip("Increase to make the pee stronger.")]
+    [SerializeField]
+    private float peeInputAxisMultiplier = 5.0f;
+
+    [SerializeField]
+    private bool useButtonNotAxis = false;
+
     private Vector3 offset;
     // Start is called before the first frame update
     void Start()
@@ -28,22 +35,48 @@ public class PeeController : MonoBehaviour
     void Update()
     {
         transform.position = objectToFollow.position + offset;
+        var peeInput = Input.GetAxisRaw("PeeAxis");
 
-        if (Input.GetButton("Pee"))
+        if (useButtonNotAxis)
         {
-            if (!particleSystem.isPlaying)
+            if (Input.GetButton("PeeButton"))
             {
-                particleSystem.Play();
-                SetInitialPeeingRotation();
+                if (!particleSystem.isPlaying)
+                {
+                    particleSystem.Play();
+                    SetInitialPeeingRotation();
+                }
+                else
+                {
+                    UpdateRotationWhilePeeing();
+                }
+            }
+            else if (Input.GetButtonUp("PeeButton"))
+            {
+                particleSystem.Stop();
+            }
+        }
+        else
+        {
+            if (peeInput > 0)
+            {
+                if (!particleSystem.isPlaying)
+                {
+                    SetInitialPeeingRotation();
+                    particleSystem.Play();
+                }
+                else
+                {
+                    UpdateRotationWhilePeeing();
+                    var main = particleSystem.main;
+                    main.startSpeedMultiplier = peeInput *= peeInputAxisMultiplier;
+                }
             }
             else
-                UpdateRotationWhilePeeing();       
-        }
-        if (Input.GetButtonUp("Pee"))
-        {
-            particleSystem.Stop();
-        }
+                particleSystem.Stop();
+        }                
     }
+
 
     /// <summary>
     /// When the player first starts peeing, snap the pee rotation Y aim to where the player is looking.
