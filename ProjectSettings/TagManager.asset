@@ -17,9 +17,9 @@ TagManager:
   - PointerGrabbableObject
   - Joints
   - NoCollisionWithJoints
-  - OnllyCollisionWithJoints
-  - 
-  - 
+  - OnlyCollisionWithJoints
+  - Particles
+  - OnlyCollideWithParticles
   - 
   - 
   - 
