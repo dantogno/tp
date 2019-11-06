@@ -6,15 +6,12 @@ using VRTK.Prefabs.Interactions.Controllables;
 public class FlushDemon : MonoBehaviour
 {
     [SerializeField]
-    private ConstantForce constantForceToDisable;
+    private Animator demonAnimator;
 
-    [SerializeField]
-    private SpringJoint springJointToDisable;
-
+    private int flushAnim = Animator.StringToHash("Flush");
     private void OnToiletFlushed()
     {
-        constantForceToDisable.enabled = false;
-        springJointToDisable.breakForce = 0.01f;
+        demonAnimator.SetTrigger(flushAnim);
     }
     private void OnEnable()
     {
