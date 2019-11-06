@@ -5,8 +5,7 @@ using UnityEngine;
 public class SummonDemon : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Need to plug in the object with the spring.")]
-    private GameObject demon;
+    private Animator demonAnimator;
 
     [SerializeField]
     [Tooltip("Player must fully open the lid this many times before the next" +
@@ -15,6 +14,7 @@ public class SummonDemon : MonoBehaviour
 
     private int timesPlayerHasFullyOpenedLid = 0;
     private bool demonSummoned = false;
+    private int summonAnimTrigger = Animator.StringToHash("Summon");
 
     private void OnToiletLidFullyOpened()
     {
@@ -29,7 +29,7 @@ public class SummonDemon : MonoBehaviour
             && !demonSummoned)
         {
             demonSummoned = true;
-            demon.SetActive(true);
+            demonAnimator.SetTrigger(summonAnimTrigger);
         }
     }
     private void OnEnable()
