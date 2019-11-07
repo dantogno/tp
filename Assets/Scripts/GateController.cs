@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK.Prefabs.Interactions.Controllables;
 
 public class GateController : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class GateController : MonoBehaviour
 
     [SerializeField]
     private Transform playerCameraTransform;
+
+    [Tooltip("Plug in the door here, not the gate. Used to stop player from opening door while gate is shut.")]
+    [SerializeField]
+    private RotationalDriveFacade doorRotationalDriveFacade;
 
     [Tooltip("How far to raycast to check if the player is looking at the hitbox")]
     [SerializeField]
@@ -31,6 +36,7 @@ public class GateController : MonoBehaviour
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out raycastHit, maxRaycastDistance, layermask))
             {
                 gateAnimator.SetTrigger(shutDoorTrigger);
+                doorRotationalDriveFacade.MoveToTargetValue = true;
             }
         }
     }
