@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class SummonDemon : MonoBehaviour
         "time they start opening the lid summons the demon.")]
     private int timesPlayerOpensLidBeforeSummoning = 1;
 
+    public static event Action DemonSummoned;
     private int timesPlayerHasFullyOpenedLid = 0;
     private bool demonSummoned = false;
     private int summonAnimTrigger = Animator.StringToHash("Summon");
@@ -30,6 +32,7 @@ public class SummonDemon : MonoBehaviour
         {
             demonSummoned = true;
             demonAnimator.SetTrigger(summonAnimTrigger);
+            DemonSummoned?.Invoke();
         }
     }
     private void OnEnable()
