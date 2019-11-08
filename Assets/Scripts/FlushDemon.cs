@@ -9,16 +9,28 @@ public class FlushDemon : MonoBehaviour
     private Animator demonAnimator;
 
     private int flushAnim = Animator.StringToHash("Flush");
+    private bool demonSummoned = false;
+    private bool demonFlushed = false;
     private void OnToiletFlushed()
     {
-        demonAnimator.SetTrigger(flushAnim);
+        if (demonSummoned & !demonFlushed)
+        {
+            demonAnimator.SetTrigger(flushAnim);
+            demonFlushed = true;
+        }
+    }
+    private void OnDemonSummoned()
+    {
+        demonSummoned = true;
     }
     private void OnEnable()
     {
         FlushController.ToiletFlushed += OnToiletFlushed;
+        SummonDemon.DemonSummoned += OnDemonSummoned;
     }
     private void OnDisable()
     {
         FlushController.ToiletFlushed -= OnToiletFlushed;
+        SummonDemon.DemonSummoned -= OnDemonSummoned;
     }
 }
