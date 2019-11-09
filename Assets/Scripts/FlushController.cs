@@ -17,6 +17,9 @@ public class FlushController : MonoBehaviour
     [SerializeField]
     private float flushResetAngle = 3.0f;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     public static event Action ToiletFlushed;
     private bool isOnCooldown;
 
@@ -27,12 +30,12 @@ public class FlushController : MonoBehaviour
             if (Mathf.Abs(rotationalJointDrive.Value) <= flushResetAngle)
             {
                 isOnCooldown = false;
-                Debug.Log("Flush reset!");
+                //Debug.Log("Flush reset!");
             }
         }
         else if (Mathf.Abs(rotationalJointDrive.Value) >= flushAngle)
         {
-            Debug.Log("Flush detected!");
+            //Debug.Log("Flush detected!");
             isOnCooldown = true;
             ToiletFlushed?.Invoke();
         }

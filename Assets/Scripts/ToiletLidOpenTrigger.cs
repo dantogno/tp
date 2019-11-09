@@ -18,7 +18,7 @@ public class ToiletLidOpenTrigger : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Started closing toilet lid!");
+        //Debug.Log("Started closing toilet lid!");
     }
     private void OnToiletLidFullyClosed()
     {

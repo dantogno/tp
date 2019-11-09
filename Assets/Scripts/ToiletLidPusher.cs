@@ -16,13 +16,13 @@ public class ToiletLidPusher : MonoBehaviour
     [SerializeField]
     private float closedThreshold = 0.1f;
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space) || Input.GetButtonDown("PeeButton"))
-        {
-            PushLidClosed();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.Space) || Input.GetButtonDown("PeeButton"))
+    //    {
+    //        PushLidClosed();
+    //    }
+    //}
 
     private void FixedUpdate()
     {

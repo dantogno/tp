@@ -15,7 +15,7 @@ public class CloseLidOnTriggerEnter : MonoBehaviour
         if (other.tag == "Player")
         {
             toiletLidPusher.PushLidClosed();
-            Debug.Log("Entered trigger!");
+            //Debug.Log("Entered trigger!");
         }
     }
 }

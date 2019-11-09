@@ -9,6 +9,9 @@ public class SummonDemon : MonoBehaviour
     private Animator demonAnimator;
 
     [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
     [Tooltip("Player must fully open the lid this many times before the next" +
         "time they start opening the lid summons the demon.")]
     private int timesPlayerOpensLidBeforeSummoning = 1;
@@ -21,20 +24,27 @@ public class SummonDemon : MonoBehaviour
     private void OnToiletLidFullyOpened()
     {
         timesPlayerHasFullyOpenedLid++;
-        Debug.Log($"Times Player has fully opened lid: {timesPlayerHasFullyOpenedLid}");
+        //Debug.Log($"Times Player has fully opened lid: {timesPlayerHasFullyOpenedLid}");
     }
     private void OnToiletLidStartedOpening()
     {
-        Debug.Log("Received lid opening event!");
-        Debug.Log($"Times Player has fully opened lid: {timesPlayerHasFullyOpenedLid}");
+        //Debug.Log("Received lid opening event!");
+        //Debug.Log($"Times Player has fully opened lid: {timesPlayerHasFullyOpenedLid}");
         if (timesPlayerHasFullyOpenedLid == timesPlayerOpensLidBeforeSummoning 
             && !demonSummoned)
         {
-            demonSummoned = true;
-            demonAnimator.SetTrigger(summonAnimTrigger);
-            DemonSummoned?.Invoke();
+            Summon();
         }
     }
+
+    private void Summon()
+    {
+        demonSummoned = true;
+        demonAnimator.SetTrigger(summonAnimTrigger);
+        DemonSummoned?.Invoke();
+        audioSource.Play();
+    }
+
     private void OnEnable()
     {
         ToiletLidOpenTrigger.ToiletLidFullyOpened += OnToiletLidFullyOpened;
