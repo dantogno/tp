@@ -31,11 +31,11 @@ public class DetectPeeInToilet : MonoBehaviour
             numberOfParticlesSoFar++;
         }
 
-        if (!toiletBowlAudio.isPlaying)
-        {
-            // toiletBowlAudio.Play();
-            // TODO figure out logic for this!
-        }
+        //if (!toiletBowlAudio.isPlaying)
+        //{
+        //    toiletBowlAudio.Play();
+        //    TODO figure out logic for this!
+        //}
 
         if (numberOfParticlesSoFar > numberOfParticlesBeforeClosingLid
             && timesClosed < timesToClose)
