@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -96,7 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 112000000, guid: 63b42525ab29ef44aa29d52cacebb03e,
+  m_LightingDataAsset: {fileID: 112000000, guid: 795d5776beb6d824d9779c5722466d40,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -23713,7 +23713,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 95f87b98c058cc747ba1ec145c100546, type: 2}
+  - {fileID: 2100000, guid: 35b3905e878c7c14a804d8e50b2f37d5, type: 2}
   - {fileID: 2100000, guid: 81ce3c0139f763d4a80369afaa9977b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -43975,7 +43975,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81ce3c0139f763d4a80369afaa9977b4, type: 2}
+  - {fileID: 2100000, guid: 35b3905e878c7c14a804d8e50b2f37d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88665,7 +88665,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 95f87b98c058cc747ba1ec145c100546, type: 2}
+  - {fileID: 2100000, guid: d9118644cf18d114abae307878884709, type: 2}
   - {fileID: 2100000, guid: 81ce3c0139f763d4a80369afaa9977b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
