@@ -38,6 +38,7 @@ public class FlushController : MonoBehaviour
             //Debug.Log("Flush detected!");
             isOnCooldown = true;
             ToiletFlushed?.Invoke();
+            audioSource.Play();
         }
     }
 }

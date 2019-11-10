@@ -13,6 +13,9 @@ public class DetectPeeInToilet : MonoBehaviour
     [SerializeField]
     private int timesToClose = 1;
 
+    [SerializeField]
+    private AudioSource toiletBowlAudio;
+
     private int numberOfParticlesSoFar, timesClosed = 0;
     private ToiletLidPusher toiletLidPusher;
     private bool waitForFullyOpen = false;
@@ -28,6 +31,12 @@ public class DetectPeeInToilet : MonoBehaviour
             numberOfParticlesSoFar++;
         }
 
+        if (!toiletBowlAudio.isPlaying)
+        {
+            // toiletBowlAudio.Play();
+            // TODO figure out logic for this!
+        }
+
         if (numberOfParticlesSoFar > numberOfParticlesBeforeClosingLid
             && timesClosed < timesToClose)
         {
@@ -37,6 +46,8 @@ public class DetectPeeInToilet : MonoBehaviour
             numberOfParticlesSoFar = 0;
         }
     }
+
+
     private void OnToiletLidFullyOpened()
     {
         waitForFullyOpen = false;

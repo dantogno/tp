@@ -24,6 +24,9 @@ public class PeeController : MonoBehaviour
     [SerializeField]
     private bool useButtonNotAxis = false;
 
+    [SerializeField]
+    private AudioSource peeAudio;
+
     private Vector3 offset;
     // Start is called before the first frame update
     void Start()
@@ -44,16 +47,19 @@ public class PeeController : MonoBehaviour
                 if (!particleSystem.isPlaying)
                 {
                     particleSystem.Play();
-                    SetInitialPeeingRotation();
+                    SetInitialPeeingRotation();                    
                 }
                 else
                 {
                     UpdateRotationWhilePeeing();
                 }
+                if (!peeAudio.isPlaying)
+                    peeAudio.Play();
             }
             else if (Input.GetButtonUp("PeeButton"))
             {
                 particleSystem.Stop();
+                peeAudio.Stop();
             }
         }
         else
@@ -71,9 +77,14 @@ public class PeeController : MonoBehaviour
                     var main = particleSystem.main;
                     main.startSpeedMultiplier = peeInput *= peeInputAxisMultiplier;
                 }
+                if (!peeAudio.isPlaying)
+                    peeAudio.Play();
             }
             else
+            {
                 particleSystem.Stop();
+                peeAudio.Stop();
+            }
         }                
     }
 

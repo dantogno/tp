@@ -9,6 +9,9 @@ public class GateController : MonoBehaviour
     private Animator gateAnimator;
 
     [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
     private Transform playerCameraTransform;
 
     [Tooltip("Plug in the door here, not the gate. Used to stop player from opening door while gate is shut.")]
@@ -35,8 +38,10 @@ public class GateController : MonoBehaviour
             // raycast from camera to door look hitbox to detect if player is looking at door
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out raycastHit, maxRaycastDistance, layermask))
             {
-                gateAnimator.SetTrigger(shutDoorTrigger);
+                gateAnimator.SetTrigger(shutDoorTrigger);                
+                audioSource.Play();
                 doorRotationalDriveFacade.MoveToTargetValue = true;
+                isDoorShut = true;
             }
         }
     }
