@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK.Prefabs.Interactions.Controllables;
@@ -26,6 +27,11 @@ public class GateController : MonoBehaviour
     [SerializeField]
     private LayerMask layermask;
 
+    [Tooltip("Object player has to look at to trigger the gate shutting.")]
+    [SerializeField]
+    private GameObject lookAtHitBox;
+
+    public static event Action GateShut;
     private bool isDemonSummoned = false;
     private bool isDoorShut = false;
     private int shutDoorTrigger = Animator.StringToHash("ShutDoor");
@@ -38,10 +44,14 @@ public class GateController : MonoBehaviour
             // raycast from camera to door look hitbox to detect if player is looking at door
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out raycastHit, maxRaycastDistance, layermask))
             {
-                gateAnimator.SetTrigger(shutDoorTrigger);                
-                audioSource.Play();
-                doorRotationalDriveFacade.MoveToTargetValue = true;
-                isDoorShut = true;
+                if (raycastHit.collider.gameObject == lookAtHitBox)
+                {
+                    gateAnimator.SetTrigger(shutDoorTrigger);                
+                    audioSource.Play();
+                    doorRotationalDriveFacade.MoveToTargetValue = true;
+                    isDoorShut = true;
+                    GateShut?.Invoke();
+                }
             }
         }
     }
