@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   androidSDKPath: C:\Program Files\Unity\Hub\Editor\2019.2.6f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK
   gradlePath: 
-  jdkPath: C:\Program Files\Unity\Hub\Editor\2019.2.6f1\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\OpenJDK\Windows\bin\java.exe
+  jdkPath: 
