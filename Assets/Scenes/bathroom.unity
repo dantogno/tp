@@ -9709,7 +9709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312745734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.79, y: -0.155, z: 0.107}
+  m_LocalPosition: {x: -0.79, y: -0.125, z: 0.107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 149255797}
@@ -14379,7 +14379,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh393734
+  m_Name: pb_Mesh462560
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20153,7 +20153,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.79, y: -0.155, z: 0.107}
+  m_ConnectedAnchor: {x: -0.79, y: -0.125, z: 0.107}
   serializedVersion: 2
   m_Spring: 10
   m_Damper: 0.2
