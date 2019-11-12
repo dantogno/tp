@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zinnia.Tracking.Collision;
 using Zinnia.Visual;
+
 
 public class PortalInnerWorldTrigger : MonoBehaviour
 {
@@ -10,30 +12,23 @@ public class PortalInnerWorldTrigger : MonoBehaviour
     [SerializeField]
     private GameObject playerHeadObject;
 
-    [Tooltip("These objects turn off when the player enters the portal, and back on when they exit it.")]
+    [Tooltip("These objects turn off when the player enters the portal, and back on when they exit it." +
+        "In other words, the objects of the Earth dimension.")]
     [SerializeField]
     List<GameObject> objectsToDisableOnTriggerEnter;
 
-    [Tooltip("These objects turn on when the player enters the portal.")]
-    [SerializeField]
-    List<GameObject> objectsToEnableOnTriggerEnter;
-
-    [Tooltip("These objects turn off when the player exits the portal.")]
-    [SerializeField]
-    List<GameObject> objectsToDisableOnTriggerExit;
-
+    public static event Action<DimensionType> PortalEntered;
+    public static event Action<DimensionType> PortalExited;
+    private DimensionType activeDimension;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == playerHeadObject)
         {
+            PortalEntered?.Invoke(activeDimension);
             foreach (var item in objectsToDisableOnTriggerEnter)
             {
                 item.SetActive(false);
-            }
-            foreach (var item in objectsToEnableOnTriggerEnter)
-            {
-                item.SetActive(true);
             }
         }
     }
@@ -42,14 +37,25 @@ public class PortalInnerWorldTrigger : MonoBehaviour
     {
         if (other.gameObject == playerHeadObject)
         {
-            foreach (var item in objectsToDisableOnTriggerExit)
-            {
-                item.SetActive(false);
-            }
+            PortalExited?.Invoke(activeDimension);
             foreach (var item in objectsToDisableOnTriggerEnter)
             {
                 item.SetActive(true);
             }
         }
+    }
+
+    private void OnActiveDimensionChanged(DimensionType newDimension)
+    {
+        activeDimension = newDimension;
+    }
+
+    private void OnEnable()
+    {
+        PortalController.ActiveDimensionChanged += OnActiveDimensionChanged;
+    }
+    private void OnDisable()
+    {
+        PortalController.ActiveDimensionChanged -= OnActiveDimensionChanged;
     }
 }
