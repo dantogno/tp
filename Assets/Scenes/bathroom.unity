@@ -4852,6 +4852,11 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8265383420104874212, guid: 240fdd985e025cb459f73d2b1bb7b341,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1588786030056821694, guid: 240fdd985e025cb459f73d2b1bb7b341,
         type: 3}
       propertyPath: Ungrabbed.m_PersistentCalls.m_Calls.Array.size
@@ -14228,7 +14233,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh4175428
+  m_Name: pb_Mesh30324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38263,6 +38268,36 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.72156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.18431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.10980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
+        type: 3}
+      propertyPath: m_Range
+      value: 18.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4154350509482238, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.75342906
@@ -38475,36 +38510,6 @@ PrefabInstance:
         type: 3}
       propertyPath: FloatCurve.m_Curve.Array.data[3].time
       value: 0.76598865
-      objectReference: {fileID: 0}
-    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.72156864
-      objectReference: {fileID: 0}
-    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.18431373
-      objectReference: {fileID: 0}
-    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.10980393
-      objectReference: {fileID: 0}
-    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 108830110200245778, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
-        type: 3}
-      propertyPath: m_Range
-      value: 18.2
       objectReference: {fileID: 0}
     - target: {fileID: 114106296357755986, guid: 3fc0a26d09ca89a4f8ef0e417730ffd2,
         type: 3}
