@@ -10,17 +10,6 @@ public class PortalInnerWorldTrigger : MonoBehaviour
     [SerializeField]
     private GameObject playerHeadObject;
 
-    [Tooltip("CollisionFader object VRTK uses to fade out world during collisions.")]
-    [SerializeField]
-    private CollisionTracker collisionFader;
-
-    [SerializeField]
-    private CameraColorOverlay cameraColorOverlay;
-
-    [Tooltip("The collider used to fade the world out when the player bumps it while entering the portal.")]
-    [SerializeField]
-    private Collider colliderToTriggerFadeIntoPortalInnerWorld;
-
     [Tooltip("These objects turn off when the player enters the portal, and back on when they exit it.")]
     [SerializeField]
     List<GameObject> objectsToDisableOnTriggerEnter;
@@ -42,9 +31,6 @@ public class PortalInnerWorldTrigger : MonoBehaviour
             {
                 item.SetActive(true);
             }
-
-            //collisionFader.enabled = false;
-            cameraColorOverlay.RemoveColorOverlay();
         }
     }
 
