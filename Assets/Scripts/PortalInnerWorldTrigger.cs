@@ -14,9 +14,13 @@ public class PortalInnerWorldTrigger : MonoBehaviour
     [SerializeField]
     List<GameObject> objectsToDisableOnTriggerEnter;
 
-    [Tooltip("These objects turn on when the player enters the portal, and back off when they exit it.")]
+    [Tooltip("These objects turn on when the player enters the portal.")]
     [SerializeField]
     List<GameObject> objectsToEnableOnTriggerEnter;
+
+    [Tooltip("These objects turn off when the player exits the portal.")]
+    [SerializeField]
+    List<GameObject> objectsToDisableOnTriggerExit;
 
 
     private void OnTriggerEnter(Collider other)
@@ -38,7 +42,7 @@ public class PortalInnerWorldTrigger : MonoBehaviour
     {
         if (other.gameObject == playerHeadObject)
         {
-            foreach (var item in objectsToEnableOnTriggerEnter)
+            foreach (var item in objectsToDisableOnTriggerExit)
             {
                 item.SetActive(false);
             }
