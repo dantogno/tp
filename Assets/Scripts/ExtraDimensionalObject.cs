@@ -26,6 +26,7 @@ public class ExtraDimensionalObject : MonoBehaviour
     /// True if object has been pulled through the portal into the earth dimension.
     /// </summary>
     private bool isInEarthDimension;
+    private bool isGrabbed;
 
     private void Awake()
     {
@@ -68,7 +69,7 @@ public class ExtraDimensionalObject : MonoBehaviour
             childObjectToControl.SetActive(true);
         else
         {
-            if (activeDimension == dimensionObjectLivesIn)
+            if (activeDimension == dimensionObjectLivesIn && !isGrabbed)
                 childObjectToControl.SetActive(false);
         }
 
@@ -85,4 +86,12 @@ public class ExtraDimensionalObject : MonoBehaviour
         PortalInnerWorldTrigger.PortalExited -= OnPortalExited;
     }
 
+    public void OnGrab()
+    {
+        isGrabbed = true;
+    }
+    public void OnRelease()
+    {
+        isGrabbed = false;
+    }
 }
