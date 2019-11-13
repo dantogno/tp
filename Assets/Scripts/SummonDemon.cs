@@ -9,7 +9,7 @@ public class SummonDemon : MonoBehaviour
     private Animator demonAnimator;
 
     [SerializeField]
-    private AudioSource audioSource;
+    private AudioSource audioSource, jumpScareAudioSource;
 
     [SerializeField]
     [Tooltip("Player must fully open the lid this many times before the next" +
@@ -43,6 +43,7 @@ public class SummonDemon : MonoBehaviour
         demonAnimator.SetTrigger(summonAnimTrigger);
         DemonSummoned?.Invoke();
         audioSource.Play();
+        jumpScareAudioSource.Play();
     }
 
     private void OnEnable()
