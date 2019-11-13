@@ -9,6 +9,7 @@ public enum DimensionType
     JumpScareDimension,
     KeyDimension
 }
+
 public class PortalController : MonoBehaviour
 {
     [SerializeField]
@@ -33,13 +34,13 @@ public class PortalController : MonoBehaviour
     private GameObject lookAtHitBox;
 
     [SerializeField]
-    private List<Color> portalColors;
-
-    [SerializeField]
     private List<MeshRenderer> portalMeshes;
 
     [SerializeField]
     private Light portalLight;
+
+    [SerializeField]
+    private Color noteDimensionColor, jumpScareDimensionColor, keyDimensionColor;
 
     /// <summary>
     /// The dimension that the portal will lead to.
@@ -47,12 +48,9 @@ public class PortalController : MonoBehaviour
     public static event Action<DimensionType> ActiveDimensionChanged;
     // TODO make this a property and call event in setter?
     private DimensionType activeDimension;
-    private int dimensionIndex;
-    private int colorIndex = 0;
-    private bool isPortalSpawned = false;
+    private bool IsPortalSpawned => portalGameObject.activeSelf;
     private bool isDemonFlushed;
     private bool isGateShut;
-    private bool obtainedNote;
     private RaycastHit raycastHit;
     private List<Material> portalMaterials = new List<Material>();
 
@@ -63,7 +61,6 @@ public class PortalController : MonoBehaviour
             portalMaterials.Add(item.material);
             Debug.Log($"Material name: {item.material.name}");
         }
-        portalColors.Add(portalLight.color);
         SetDimension(startingDimension);
     }
 
@@ -77,14 +74,13 @@ public class PortalController : MonoBehaviour
     /// </summary>
     private void UpdatePortalIsPortalSpawned()
     {
-        if (!isPortalSpawned && isGateShut && isDemonFlushed)
+        if (!IsPortalSpawned && isGateShut && isDemonFlushed)
         {
             // raycast from camera to door look hitbox to detect if player is looking at door
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out raycastHit, maxRaycastDistance, layermask))
             {
                 if (raycastHit.collider.gameObject == lookAtHitBox)
                 {
-                    isPortalSpawned = true;
                     portalGameObject.SetActive(true);
                 }
             }
@@ -94,29 +90,62 @@ public class PortalController : MonoBehaviour
     private void OnToiletFlushed()
     {
         // Change dimensions if portal is spawned
-        if (isPortalSpawned)
+        if (IsPortalSpawned)
         {
-            ChangeDimensions();
+            CycleDimensions();
         }
     }
 
     private void SetDimension(DimensionType newDimension)
     {
         activeDimension = newDimension;
+        UpdatePortalColor();
         ActiveDimensionChanged?.Invoke(activeDimension);
     }
-    private void ChangeDimensions()
+    private void CycleDimensions()
     {
-        colorIndex++;
-        colorIndex = colorIndex >= portalColors.Count ? 0 : colorIndex;
+        switch (activeDimension)
+        {
+            case DimensionType.NoteDimension:
+                activeDimension = DimensionType.JumpScareDimension;
+                break;
+            case DimensionType.JumpScareDimension:
+                activeDimension = DimensionType.KeyDimension;
+                break;
+            case DimensionType.KeyDimension:
+                activeDimension = DimensionType.NoteDimension;
+                break;
+            default:
+                break;
+        }
+        UpdatePortalColor();
+        ActiveDimensionChanged?.Invoke(activeDimension);
+    }
 
-        portalLight.color = portalColors[colorIndex];
+    private void UpdatePortalColor()
+    {
+        Color colorToSet;
+        switch (activeDimension)
+        {
+            case DimensionType.NoteDimension:
+                colorToSet = noteDimensionColor;
+                break;
+            case DimensionType.JumpScareDimension:
+                colorToSet = jumpScareDimensionColor;
+                break;
+            case DimensionType.KeyDimension:
+                colorToSet = keyDimensionColor;
+                break;
+            default:
+                colorToSet = noteDimensionColor;
+                break;
+        }
+
+        portalLight.color = colorToSet;
         foreach (var item in portalMaterials)
         {
-            item.SetColor("_TintColor", portalColors[colorIndex]);
+            item.SetColor("_TintColor", colorToSet);
         }
-        // TODO: update the active dimension here!
-        ActiveDimensionChanged?.Invoke(activeDimension);
     }
 
     private void OnDemonFlushed()
