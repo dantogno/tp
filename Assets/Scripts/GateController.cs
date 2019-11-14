@@ -16,6 +16,9 @@ public class GateController : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField]
+    private AudioClip unlockClip, openClip;
+
+    [SerializeField]
     private Transform playerCameraTransform;
 
     [Tooltip("Plug in the door here, not the gate. Used to stop player from opening door while gate is shut.")]
@@ -41,10 +44,17 @@ public class GateController : MonoBehaviour
     private int unlockTrigger = Animator.StringToHash("Unlock");
     private RaycastHit raycastHit;
 
+    public void PlayOpenClip()
+    {
+        audioSource.clip = openClip;
+        audioSource.Play();
+    }
     private void OnTriggerEnter(Collider other)
     {        
         if (other == key)
         {
+            audioSource.clip = unlockClip;
+            audioSource.Play();
             gateAnimator.SetTrigger(unlockTrigger);
         }
     }
