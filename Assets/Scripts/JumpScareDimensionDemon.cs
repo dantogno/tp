@@ -13,11 +13,20 @@ public class JumpScareDimensionDemon : MonoBehaviour
     [SerializeField]
     private float jumpScareAudioDelay = 0.15f;
 
-    private int summonAnimTrigger = Animator.StringToHash("Summon");
+    [SerializeField]
+    private Transform demonPhysicsTransform;
 
+    private int summonAnimTrigger = Animator.StringToHash("Summon");
+    private Vector3 originalPosition;
     private void OnEnable()
     {
+        originalPosition = demonPhysicsTransform.position;
         demonAnimator.SetTrigger(summonAnimTrigger);
         jumpScareAudio.PlayDelayed(jumpScareAudioDelay);
+    }
+    private void OnDisable()
+    {
+        demonAnimator.SetTrigger(summonAnimTrigger);
+        demonPhysicsTransform.position = originalPosition;
     }
 }
