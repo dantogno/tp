@@ -42,7 +42,6 @@ public class SummonDemon : MonoBehaviour
         demonSummoned = true;
         demonAnimator.SetTrigger(summonAnimTrigger);
         DemonSummoned?.Invoke();
-        audioSource.Play();
         jumpScareAudioSource.Play();
     }
 
