@@ -7,6 +7,9 @@ using VRTK.Prefabs.Interactions.Controllables;
 public class GateController : MonoBehaviour
 {
     [SerializeField]
+    private Collider key;
+
+    [SerializeField]
     private Animator gateAnimator;
 
     [SerializeField]
@@ -35,8 +38,16 @@ public class GateController : MonoBehaviour
     private bool isDemonSummoned = false;
     private bool isDoorShut = false;
     private int shutDoorTrigger = Animator.StringToHash("ShutDoor");
+    private int unlockTrigger = Animator.StringToHash("Unlock");
     private RaycastHit raycastHit;
 
+    private void OnTriggerEnter(Collider other)
+    {        
+        if (other == key)
+        {
+            gateAnimator.SetTrigger(unlockTrigger);
+        }
+    }
     private void FixedUpdate()
     {
         if (isDemonSummoned && !isDoorShut)
