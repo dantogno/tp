@@ -284,7 +284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -356.00003}
+  m_AnchoredPosition: {x: 0, y: -27}
   m_SizeDelta: {x: 830, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935502146
@@ -306,6 +306,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Original soundtrack by Haddonfield A.V.
+
+    Listen free at haddonfieldav.bandcamp.com
 
 
     For a detailed list of outsourced assets credits, visit tp.nightcitygames.com.
@@ -363,7 +365,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 97
+  m_firstOverflowCharacterIndex: 83
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -387,12 +389,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 769.1797, z: 0, w: 1060.3264}
   m_textInfo:
     textComponent: {fileID: 935502146}
-    characterCount: 145
+    characterCount: 187
     spriteCount: 0
-    spaceCount: 24
-    wordCount: 21
+    spaceCount: 28
+    wordCount: 27
     linkCount: 0
-    lineCount: 10
+    lineCount: 11
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -452,7 +454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1709}
+  m_AnchoredPosition: {x: 0, y: -1380}
   m_SizeDelta: {x: 467, y: 496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150110759
@@ -734,7 +736,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5851849635203658957}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 0.008026187, y: 0.008026187, z: 0.008026187}
   m_Children:
   - {fileID: 5851849636719011711}
@@ -841,7 +843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -173}
+  m_AnchoredPosition: {x: 0, y: 189.99997}
   m_SizeDelta: {x: 830, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5851849635463691209

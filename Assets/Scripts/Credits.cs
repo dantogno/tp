@@ -5,7 +5,6 @@ using UnityEngine;
 public class Credits : MonoBehaviour
 {
     private Transform playerHeadTransform;
-
     private void Start()
     {
         // Adjust Y to match player height
