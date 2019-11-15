@@ -37,7 +37,7 @@ public class GateController : MonoBehaviour
     [SerializeField]
     private GameObject lookAtHitBox;
 
-    public static event Action GateShut;
+    public static event Action GateShut, GateUnlocked;
     private bool isDemonSummoned = false;
     private bool isDoorShut = false;
     private int shutDoorTrigger = Animator.StringToHash("ShutDoor");
@@ -56,6 +56,7 @@ public class GateController : MonoBehaviour
             audioSource.clip = unlockClip;
             audioSource.Play();
             gateAnimator.SetTrigger(unlockTrigger);
+            GateUnlocked?.Invoke();
         }
     }
     private void FixedUpdate()
