@@ -31,7 +31,7 @@ public class JumpScareDimensionDemon : MonoBehaviour
     private void OnDisable()
     {
         demonAnimator.SetTrigger(summonAnimTrigger);
-        //demonPhysicsTransform.position = originalPosition;
+        demonPhysicsTransform.position = originalPosition;
         demonPhysicsTransform.isKinematic = true;
     }
 }
