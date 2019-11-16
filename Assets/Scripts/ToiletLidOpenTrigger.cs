@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ToiletLidOpenTrigger : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource audioSource;
     public static event Action ToiletLidFullyOpened;
     private bool isOnCooldown = true;
     private void OnTriggerEnter(Collider other)
@@ -15,6 +17,7 @@ public class ToiletLidOpenTrigger : MonoBehaviour
             ToiletLidFullyOpened?.Invoke();
             isOnCooldown = true;
         }
+        audioSource.Play();
     }
     private void OnTriggerExit(Collider other)
     {
