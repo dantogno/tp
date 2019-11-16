@@ -336,21 +336,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Original soundtrack by Haddonfield A.V.
-
-    Listen free at haddonfieldav.bandcamp.com
-
-
-    For a detailed list of outsourced assets credits, visit tp.nightcitygames.com.
-
-
-
-
-
-    Thanks for playing!
-
-
-'
+  m_text: "Original soundtrack by Haddonfield A.V.\nListen free at haddonfieldav.bandcamp.com\n\nFor
+    a detailed list of outsourced assets credits, visit tp.nightcitygames.com.\n\nGet
+    a behind the scenes look at the development of T.P. at \ngithub.com/dantogno/tp!\n\n\n\nThanks
+    for playing!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5d375f0edb814342ab895cbf775ba14, type: 2}
   m_sharedMaterial: {fileID: 5591833338583429002, guid: f5d375f0edb814342ab895cbf775ba14,
@@ -420,12 +409,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 769.1797, z: 0, w: 1060.3264}
   m_textInfo:
     textComponent: {fileID: 935502146}
-    characterCount: 187
+    characterCount: 271
     spriteCount: 0
-    spaceCount: 28
-    wordCount: 27
+    spaceCount: 42
+    wordCount: 44
     linkCount: 0
-    lineCount: 11
+    lineCount: 14
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
