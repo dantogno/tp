@@ -16,9 +16,14 @@ public class DetectPeeInToilet : MonoBehaviour
     [SerializeField]
     private AudioSource toiletBowlAudio;
 
+    [Tooltip("If the player hasn't peed in the toilet for this long, stop the sound effect.")]
+    [SerializeField]
+    private float stoppedPeeingInBowlCooldown = 0.1f;
+
     private int numberOfParticlesSoFar, timesClosed = 0;
     private ToiletLidPusher toiletLidPusher;
     private bool waitForFullyOpen = false;
+    private float lastPeedInToiletTime;
 
     private void Awake()
     {
@@ -26,16 +31,16 @@ public class DetectPeeInToilet : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
+        
         if (!waitForFullyOpen)
         {
             numberOfParticlesSoFar++;
         }
 
-        //if (!toiletBowlAudio.isPlaying)
-        //{
-        //    toiletBowlAudio.Play();
-        //    TODO figure out logic for this!
-        //}
+        if (!toiletBowlAudio.isPlaying)
+        {
+            toiletBowlAudio.Play();
+        }
 
         if (numberOfParticlesSoFar > numberOfParticlesBeforeClosingLid
             && timesClosed < timesToClose)
@@ -45,9 +50,15 @@ public class DetectPeeInToilet : MonoBehaviour
             waitForFullyOpen = true;
             numberOfParticlesSoFar = 0;
         }
+        lastPeedInToiletTime = Time.time;
     }
+    private void Update()
+    {
+        if (Time.time - lastPeedInToiletTime > stoppedPeeingInBowlCooldown
+            && toiletBowlAudio.isPlaying)
+            toiletBowlAudio.Stop();
 
-
+    }
     private void OnToiletLidFullyOpened()
     {
         waitForFullyOpen = false;
