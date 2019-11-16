@@ -38,7 +38,7 @@ public class PeeController : MonoBehaviour
     void Update()
     {
         transform.position = objectToFollow.position + offset;
-        var peeInput = Input.GetAxisRaw("PeeAxis");
+        var peeInput = Mathf.Abs( Input.GetAxisRaw("PeeAxis"));
 
         if (useButtonNotAxis)
         {
