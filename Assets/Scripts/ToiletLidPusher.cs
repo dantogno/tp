@@ -20,7 +20,7 @@ public class ToiletLidPusher : MonoBehaviour
     //{
     //    if (Input.GetKey(KeyCode.Space) || Input.GetButtonDown("PeeButton"))
     //    {
-    //        PushLidClosed();
+    //        PushLidOpen();
     //    }
     //}
 
@@ -48,6 +48,26 @@ public class ToiletLidPusher : MonoBehaviour
     {
         toiletLidRigidbody.useGravity = true;
         toiletLidRigidbody.AddForce(toiletLidRigidbody.transform.forward * forceMultiplier);
+    }
+
+    public void PushLidOpen()
+    {
+        toiletLidRigidbody.AddForce(toiletLidRigidbody.transform.forward * -1 * forceMultiplier);
+    }
+
+    private void OnPortalSpawned()
+    {
+        PushLidOpen();
+    }
+
+    private void OnEnable()
+    {
+        PortalController.PortalSpawned += OnPortalSpawned;   
+    }
+
+    private void OnDisable()
+    {
+        PortalController.PortalSpawned -= OnPortalSpawned;
     }
 
 }

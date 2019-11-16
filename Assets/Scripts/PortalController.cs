@@ -46,6 +46,7 @@ public class PortalController : MonoBehaviour
     /// The dimension that the portal will lead to.
     /// </summary>
     public static event Action<DimensionType> ActiveDimensionChanged;
+    public static event Action PortalSpawned;
     // TODO make this a property and call event in setter?
     private DimensionType activeDimension;
     private bool IsPortalSpawned => portalGameObject.activeSelf;
@@ -82,6 +83,7 @@ public class PortalController : MonoBehaviour
                 if (raycastHit.collider.gameObject == lookAtHitBox)
                 {
                     portalGameObject.SetActive(true);
+                    PortalSpawned?.Invoke();
                 }
             }
         }
