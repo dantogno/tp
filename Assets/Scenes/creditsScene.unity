@@ -866,7 +866,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Game design and programming . . . David Antognoli
 
-    Graphic design . . . .  . . . . . . . Michael Vaughn Green
+    Visual design . . . .  . . . . . . . Michael Vaughn Green
 
     Sound design .  . . . . . . . . . . . . . . . . . . . . . Aaron Baer
 
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 178
+  m_firstOverflowCharacterIndex: 177
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 769.1797, z: 0, w: 1060.3264}
   m_textInfo:
     textComponent: {fileID: 5851849635463691209}
-    characterCount: 179
+    characterCount: 178
     spriteCount: 0
     spaceCount: 54
     wordCount: 15

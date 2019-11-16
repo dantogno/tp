@@ -14,10 +14,14 @@ public class JumpScareDimensionDemon : MonoBehaviour
     private float jumpScareAudioDelay = 0.15f;
 
     [SerializeField]
-    private Transform demonPhysicsTransform;
+    private Rigidbody demonPhysicsTransform;
 
     private int summonAnimTrigger = Animator.StringToHash("Summon");
     private Vector3 originalPosition;
+    private void Awake()
+    {
+        demonPhysicsTransform.GetComponent<Rigidbody>();
+    }
     private void OnEnable()
     {
         originalPosition = demonPhysicsTransform.position;
@@ -27,6 +31,7 @@ public class JumpScareDimensionDemon : MonoBehaviour
     private void OnDisable()
     {
         demonAnimator.SetTrigger(summonAnimTrigger);
-        demonPhysicsTransform.position = originalPosition;
+        //demonPhysicsTransform.position = originalPosition;
+        demonPhysicsTransform.isKinematic = true;
     }
 }
