@@ -3,7 +3,22 @@ guid: 2be1ed68da7d687428bc71e20ac011d3
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black_Plastic
+    second: {fileID: 2100000, guid: 743ea106a3a80a64db10eb7361a9c3aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: c87c517572c11e54dae3ecc411076a44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Feet
+    second: {fileID: 2100000, guid: fd008c52a60ce2b4ea3626c1981f208e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
