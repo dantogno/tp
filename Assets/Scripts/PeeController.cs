@@ -15,20 +15,24 @@ public class PeeController : MonoBehaviour
     private float rotationThreshold;
 
     [SerializeField]
-    private float rotationSpeed = 1.0f;
+    private float rotationYSpeed = 150.0f;
+
+    [SerializeField]
+    private float rotationXSpeed = 5.0f;
+
+    [Range(0,90)]
+    [Tooltip("0 to 1. 1 = 90 degrees.")]
+    [SerializeField]
+    private float rotationXMax = 0.5f;
 
     [Tooltip("Increase to make the pee stronger.")]
     [SerializeField]
     private float peeInputAxisMultiplier = 5.0f;
 
     [SerializeField]
-    private bool useButtonNotAxis = false;
-
-    [SerializeField]
     private AudioSource peeAudio;
 
     private Vector3 offset;
-    // Start is called before the first frame update
     void Start()
     {
         offset = transform.position - objectToFollow.position;
@@ -38,54 +42,47 @@ public class PeeController : MonoBehaviour
     void Update()
     {
         transform.position = objectToFollow.position + offset;
-        var peeInput = Mathf.Abs( Input.GetAxisRaw("PeeAxis"));
-
-        if (useButtonNotAxis)
+        var peeInput = Input.GetAxis("PeeAxis");
+        var peeInputAbs = Mathf.Abs(peeInput);
+        
+        if (peeInputAbs > 0)
         {
-            if (Input.GetButton("PeeButton"))
+            if (!particleSystem.isPlaying)
             {
-                if (!particleSystem.isPlaying)
-                {
-                    particleSystem.Play();
-                    SetInitialPeeingRotation();                    
-                }
-                else
-                {
-                    UpdateRotationWhilePeeing();
-                }
-                if (!peeAudio.isPlaying)
-                    peeAudio.Play();
-            }
-            else if (Input.GetButtonUp("PeeButton"))
-            {
-                particleSystem.Stop();
-                peeAudio.Stop();
-            }
-        }
-        else
-        {
-            if (peeInput > 0)
-            {
-                if (!particleSystem.isPlaying)
-                {
-                    SetInitialPeeingRotation();
-                    particleSystem.Play();
-                }
-                else
-                {
-                    UpdateRotationWhilePeeing();
-                    var main = particleSystem.main;
-                    main.startSpeedMultiplier = peeInput *= peeInputAxisMultiplier;
-                }
-                if (!peeAudio.isPlaying)
-                    peeAudio.Play();
+                SetInitialPeeingRotation();
+                particleSystem.Play();
             }
             else
             {
-                particleSystem.Stop();
-                peeAudio.Stop();
+                UpdateYRotationWhilePeeing();
+                UpdateXRotationWhilePeeing(peeInput);
+                var main = particleSystem.main;
+                main.startSpeedMultiplier = peeInputAbs *= peeInputAxisMultiplier;
             }
-        }                
+            if (!peeAudio.isPlaying)
+                peeAudio.Play();
+        }
+        else
+        {
+            particleSystem.Stop();
+            peeAudio.Stop();
+        }                        
+    }
+
+    /// <summary>
+    /// If the player pulls back on the joystick, aim the pee upward.
+    /// </summary>
+    /// <param name="input"></param>
+    private void UpdateXRotationWhilePeeing(float input)
+    {
+        if (input < 0)
+        {
+            var rotationXAdjustment = (rotationXSpeed * input) + transform.rotation.eulerAngles.x;
+            Debug.Log($"rotaionX: {transform.rotation.eulerAngles.x}");
+            rotationXAdjustment = Mathf.Clamp(Mathf.Abs(rotationXAdjustment), 0, rotationXMax) * -1;
+            var newRotation = Quaternion.Euler(rotationXAdjustment, transform.rotation.eulerAngles.y, 0);
+            transform.rotation = newRotation;
+        }        
     }
 
 
@@ -104,13 +101,13 @@ public class PeeController : MonoBehaviour
     /// system's Y rotation is greater than the threshold, then the
     /// particle system should begin to rotate along with the player.
     /// </summary>
-    private void UpdateRotationWhilePeeing()
+    private void UpdateYRotationWhilePeeing()
     {
         if (Mathf.Abs(transform.eulerAngles.y - objectToFollow.eulerAngles.y) > rotationThreshold)
         {
-            float step = rotationSpeed * Time.deltaTime;
+            float step = rotationYSpeed * Time.deltaTime;
             var newRotation = Quaternion.RotateTowards(transform.rotation, objectToFollow.localRotation, step);
-            newRotation.eulerAngles = new Vector3(0, newRotation.eulerAngles.y, 0);
+            newRotation.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, newRotation.eulerAngles.y, 0);
             transform.rotation = newRotation;
         }
     }
