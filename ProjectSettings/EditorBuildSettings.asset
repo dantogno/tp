@@ -5,13 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/tutorialScene.unity
     guid: fd204709cb00c1c42a6cd8e2543cffca
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/small_bathroom.unity
     guid: 5d114b23178cdea4b8813da5472626db
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/creditsScene.unity
     guid: 642d87e5f66ebbb44a9d14e5753c63f4
+  - enabled: 1
+    path: Assets/Scenes/fluidTest.unity
+    guid: b88e2fc0c7b97024fa4d9145ed9fbff0
+  - enabled: 0
+    path: Assets/Obi/Samples/Fluid/FluidJet.unity
+    guid: 02bbf020659ab49378c778ff6679d2eb
   m_configObjects: {}
