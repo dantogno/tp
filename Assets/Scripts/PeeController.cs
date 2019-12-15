@@ -75,7 +75,7 @@ public class PeeController : MonoBehaviour
     /// <param name="input"></param>
     private void UpdateXRotationWhilePeeing(float input)
     {
-        if (input < 0)
+        if (input > 0)
         {
             var rotationXAdjustment = (rotationXSpeed * input) + transform.rotation.eulerAngles.x;
             Debug.Log($"rotaionX: {transform.rotation.eulerAngles.x}");
