@@ -7,21 +7,38 @@ public class ToiletLidOpenTrigger : MonoBehaviour
 {
     [SerializeField]
     private AudioSource audioSource;
+
+    [SerializeField]
+    private Collider toiletLidCollider;
+
+    [Tooltip("If we don't disable the audio for a bit, it will play the sfx when the player exits the portal.")]
+    [SerializeField]
+    private float disableAudioTimeOnPortalExit = 0.25f;
+
     public static event Action ToiletLidFullyOpened;
     private bool isOnCooldown = true;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Toilet lid is fully open.");
-        if (!isOnCooldown)
+        if (other == toiletLidCollider)
         {
-            ToiletLidFullyOpened?.Invoke();
-            isOnCooldown = true;
+            // Debug.Log("Toilet lid is fully open.");
+            if (!isOnCooldown)
+            {
+                ToiletLidFullyOpened?.Invoke();
+                isOnCooldown = true;
+            }
+            audioSource.Play();
         }
-        audioSource.Play();
     }
-    private void OnTriggerExit(Collider other)
+    private IEnumerator DisableSoundForSeconds(float seconds)
     {
-        //Debug.Log("Started closing toilet lid!");
+        audioSource.enabled = false;
+        yield return new WaitForSeconds(seconds);
+        audioSource.enabled = true;
+    }
+    private void OnPortalExited(DimensionType dimensionType)
+    {
+        StartCoroutine(DisableSoundForSeconds(disableAudioTimeOnPortalExit));
     }
     private void OnToiletLidFullyClosed()
     {
@@ -30,9 +47,11 @@ public class ToiletLidOpenTrigger : MonoBehaviour
     private void OnEnable()
     {
         ToiletLidClosedTrigger.ToiletLidFullyClosed += OnToiletLidFullyClosed;
+        PortalInnerWorldTrigger.PortalExited += OnPortalExited;
     }
     private void OnDisable()
     {
         ToiletLidClosedTrigger.ToiletLidFullyClosed -= OnToiletLidFullyClosed;
+        PortalInnerWorldTrigger.PortalExited -= OnPortalExited;
     }
 }

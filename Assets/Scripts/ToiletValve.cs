@@ -9,14 +9,22 @@ public class ToiletValve : MonoBehaviour
 
     private float timeObjectStarted;
     private AudioSource audioSource;
+    private bool isTriggered;
 
-    private void Start()
+    private void OnEnable()
     {
-        particleSystem.Stop();
+       if (!isTriggered)
+            particleSystem.Stop();
+       else
+            particleSystem.Play();
     }
+
     public void OnGrabbed()
     {
-        if (!particleSystem.isPlaying)
+        if (!isTriggered)
+        {
+            isTriggered = true;
             particleSystem.Play();
+        }            
     }
 }

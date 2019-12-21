@@ -8,17 +8,26 @@ public class ToiletLidClosedTrigger : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
+    [SerializeField]
+    private Collider toiletLidCollider;
+
     public static event Action ToiletLidStartedOpening, ToiletLidFullyClosed;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ToiletClosed");
-        ToiletLidFullyClosed?.Invoke();
-        audioSource.Play();
+        if (other == toiletLidCollider)
+        {
+            // Debug.Log("ToiletClosed");
+            ToiletLidFullyClosed?.Invoke();
+            audioSource.Play();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Started opening toilet lid!");
-        ToiletLidStartedOpening?.Invoke();
+        if (other == toiletLidCollider)
+        {
+            // Debug.Log("Started opening toilet lid!");
+            ToiletLidStartedOpening?.Invoke();
+        }
     }
 }
