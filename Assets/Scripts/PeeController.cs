@@ -32,7 +32,9 @@ public class PeeController : MonoBehaviour
     [SerializeField]
     private AudioSource peeAudio;
 
+    public static event Action PlayerStartedPeeing;
     private Vector3 offset;
+
     void Start()
     {
         offset = transform.position - objectToFollow.position;
@@ -47,6 +49,7 @@ public class PeeController : MonoBehaviour
         
         if (peeInputAbs > 0)
         {
+            PlayerStartedPeeing?.Invoke();
             if (!particleSystem.isPlaying)
             {
                 SetInitialPeeingRotation();
@@ -78,7 +81,7 @@ public class PeeController : MonoBehaviour
         if (input > 0)
         {
             var rotationXAdjustment = (rotationXSpeed * input) + transform.rotation.eulerAngles.x;
-            Debug.Log($"rotaionX: {transform.rotation.eulerAngles.x}");
+            // Debug.Log($"rotaionX: {transform.rotation.eulerAngles.x}");
             rotationXAdjustment = Mathf.Clamp(Mathf.Abs(rotationXAdjustment), 0, rotationXMax) * -1;
             var newRotation = Quaternion.Euler(rotationXAdjustment, transform.rotation.eulerAngles.y, 0);
             transform.rotation = newRotation;
