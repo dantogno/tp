@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class DidPlayerShutDoorBeforePeeing : MonoBehaviour
 {
+    [SerializeField]
+    private int value = 1; 
+
     private bool hasPlayerPeed = false;
     private void OnPlayerStartedPeeing()
     {
-        Debug.Log($"Rank: {Ranking.RankPoints}");
+        // Debug.Log($"Rank: {Ranking.RankPoints}");
         if (!hasPlayerPeed)
         {
             hasPlayerPeed = true;
             if (!DoorStatusChecker.Instance.IsDoorOpen)
-                Ranking.RankPoints++;
+            {
+                Debug.Log($"Awarded DidPlayerShutDoorBeforePeeing rank value of {value}");
+                Ranking.RankPoints += value;
+            }
         }
     }
 

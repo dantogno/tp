@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public class EndLevelTrigger : MonoBehaviour
     [SerializeField]
     private float delayBeforeLoadingCredits = 3;
 
+    public static event Action LevelEnded;
     private CameraColorOverlay cameraColorOverlay;
     private AudioSource audioSource;
     private bool isGateUnlocked;
@@ -22,13 +24,16 @@ public class EndLevelTrigger : MonoBehaviour
         cameraColorOverlay = GetComponent<CameraColorOverlay>();
         audioSource = GetComponent<AudioSource>();
     }
-    private void Start()
+#if UNITY_EDITOR
+    private void Update()
     {
         if (debugTestEndingSequence)
             DoEndLevelSequence();
     }
+#endif
     private IEnumerator EndingSequenceCoroutine()
     {
+        LevelEnded?.Invoke();
         yield return new WaitForSeconds(delayBeforeLoadingCredits);
         SceneManager.LoadScene("creditsScene");
     }
