@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/creditsScene.unity
     guid: 642d87e5f66ebbb44a9d14e5753c63f4
+  - enabled: 1
+    path: Assets/Scenes/afterActionReview.unity
+    guid: 61c13adf371118d48beb75f66c46c943
   m_configObjects: {}
