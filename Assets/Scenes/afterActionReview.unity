@@ -822,18 +822,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150110757}
   m_CullTransparentMesh: 0
---- !u!114 &1511697142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5851849635203658957}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce4fbe12056df32409ea101fc26f3545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1775524996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1077,8 +1065,8 @@ GameObject:
   - component: {fileID: 5851849635203658944}
   - component: {fileID: 5851849635203658959}
   - component: {fileID: 5851849635203658958}
-  - component: {fileID: 1511697142}
   - component: {fileID: 5851849635203658960}
+  - component: {fileID: 5851849635203658961}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1135,7 +1123,7 @@ Animator:
   m_GameObject: {fileID: 5851849635203658957}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d052995855bbd6e4b8b7102b2d8014b1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1144,3 +1132,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5851849635203658961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851849635203658957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6722fd36381694498a6a308031ac68b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rankText: {fileID: 174951552}

@@ -10,6 +10,11 @@ public class DidPlayerTurnOffFaucetBeforeLeaving : MonoBehaviour
 
     private bool isFaucetOn;
 
+    private void Awake()
+    {
+        Ranking.TotalPossiblePoints += value;
+    }
+
     private void OnLevelEnded()
     {
         if (!isFaucetOn)

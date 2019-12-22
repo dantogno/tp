@@ -28,14 +28,15 @@ public class EndLevelTrigger : MonoBehaviour
     private void Update()
     {
         if (debugTestEndingSequence)
-            DoEndLevelSequence();
+            if (!isTriggered)
+                DoEndLevelSequence();
     }
 #endif
     private IEnumerator EndingSequenceCoroutine()
     {
         LevelEnded?.Invoke();
         yield return new WaitForSeconds(delayBeforeLoadingCredits);
-        SceneManager.LoadScene("creditsScene");
+        SceneManager.LoadScene("afterActionReview");
     }
     private void OnTriggerEnter(Collider other)
     {

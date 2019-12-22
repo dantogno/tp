@@ -8,6 +8,10 @@ public class DidPlayerShutDoorBeforePeeing : MonoBehaviour
     private int value = 1; 
 
     private bool hasPlayerPeed = false;
+    private void Awake()
+    {
+        Ranking.TotalPossiblePoints += value;
+    }
     private void OnPlayerStartedPeeing()
     {
         // Debug.Log($"Rank: {Ranking.RankPoints}");

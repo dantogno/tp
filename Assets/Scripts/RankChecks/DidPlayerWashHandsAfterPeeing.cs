@@ -8,6 +8,10 @@ public class DidPlayerWashHandsAfterPeeing : MonoBehaviour
     [SerializeField]
     private int value = 1;
 
+    private void Awake()
+    {
+        Ranking.TotalPossiblePoints += value;
+    }
     private void OnLevelEnded()
     {
         if (HandWashDetector.Instance.AreHandsWashed)
