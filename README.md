@@ -5,8 +5,6 @@ T.P. is a short virtual reality horror-adventure game about a bathroom housing a
 [Credits](https://github.com/dantogno/tp/wiki/Credits)
 
 ## Documentation
-- I have tried to document the project following the methods described here: https://www.gamesasresearch.com/mdma
-
-- Please check out the project [wiki](https://github.com/dantogno/tp/wiki) for more info!
+- Please check out the project [wiki](https://github.com/dantogno/tp/wiki)
 
 ![](https://www.davidantognoli.com/wp-content/uploads/2020/04/TPtoilet.gif)
