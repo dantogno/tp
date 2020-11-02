@@ -6,6 +6,10 @@ Download links:
 - https://sidequestvr.com/app/2050/tp
 - https://nightcity.itch.io/tp
 
+Teaser trailer: https://youtu.be/2o-o5EGCfek
+
+Full playthrough (spoilers): https://youtu.be/ltKb8khNx5E
+
 [Credits](https://github.com/dantogno/tp/wiki/Credits)
 
 ## Documentation
