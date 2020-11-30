@@ -13,6 +13,7 @@ Full playthrough (spoilers): https://youtu.be/ltKb8khNx5E
 [Credits](https://github.com/dantogno/tp/wiki/Credits)
 
 ## Documentation
-- Please check out the project [wiki](https://github.com/dantogno/tp/wiki)
+
+Development of this project follows the MDMA methodology for documenting design process. Please check out the project [wiki](https://github.com/dantogno/tp/wiki) for more information.
 
 ![](https://www.davidantognoli.com/wp-content/uploads/2020/04/TPtoilet.gif)
