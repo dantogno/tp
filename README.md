@@ -14,6 +14,8 @@ Full playthrough (spoilers): https://youtu.be/ltKb8khNx5E
 
 ## Documentation
 
-Development of this project follows the MDMA methodology for documenting design process. Please check out the project [wiki](https://github.com/dantogno/tp/wiki) for more information.
+Development of this project follows the MDMA methodology for documenting design process.
+
+* [Project wiki](https://github.com/dantogno/tp/wiki)
 
 ![](https://www.davidantognoli.com/wp-content/uploads/2020/04/TPtoilet.gif)
