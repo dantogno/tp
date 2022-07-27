@@ -14,7 +14,7 @@ Full playthrough (spoilers): https://youtu.be/ltKb8khNx5E
 
 ## Documentation
 
-Development of this project follows the MDMA methodology for documenting design process.
+Development of this project follows the [MDMA](https://www.gamesasresearch.com/mdm) (Method for Design Materialization and Analysis) methodology for [applied game design research](https://www.gamesasresearch.com/assets/pdfs/Documenting_Trajectories_in_Design_Space.pdf).
 
 * [Project wiki](https://github.com/dantogno/tp/wiki)
 
